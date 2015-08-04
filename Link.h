@@ -9,23 +9,11 @@ template <class T>
 class Link_Node {
     public  :
     // Constructor / Destructor
-    Link_Node(T inf, Link_Node* nxt) : info(inf), next(next) {}
+    Link_Node(T* inf, Link_Node* nxt = NULL, Link_Node* prv = NULL) :
+        info(inf), next(nxt), prev(prv) {}
     ~Link_Node() {}
-    private :
-    T info;
+    T* info;
     Link_Node* next;
-};
-
-template <class T>
-class Double_Link_Node {
-    public  :
-    // Constructor / Destructor
-    Double_Link_Node(T inf, Link_Node* prv, Double_Link_Node* nxt) :
-        info(inf), prev(prv), next(nxt) {}
-    ~Double_Link_Node() {}
-    private :
-    T info;
-    Double_Link_Node* prev;
-    Double_Link_Node* next;
+    Link_Node* prev;
 };
 #endif // LINK.H ///:~
