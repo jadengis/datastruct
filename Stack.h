@@ -8,21 +8,21 @@
 
 template <class T>
 class Stack {
-    private :
-    Link_Node<T>* top;
-    
-    public :
+   public :
     Stack() : top(NULL) {}
+
     ~Stack() {
-        while (top != NULL) {
+        while (!empty()) {
             delete pop();
         }
     }
+
     void push(T* new_info) {
         top = new Link_Node<T>(new_info, top);
     }
+
     T* pop() {
-        if (top == NULL) {
+        if (empty()) {
             std::cout << "Stack empty" << std::endl;
             return NULL;
         }
@@ -32,12 +32,19 @@ class Stack {
         delete old_top;
         return inf;
     }
+
     T* peek() {
-        if (top == NULL) {
+        if (empty()) {
             std::cout << "Stack empty" << std::endl;
             return NULL;
         }
         return top->info;
+    }
+
+    private :
+    Link_Node<T>* top;
+    bool empty() {
+        return top == NULL;
     }
 };
 #endif // Stack_H
